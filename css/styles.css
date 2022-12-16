@@ -288,6 +288,27 @@ img {
 
 .job .item {
   flex-basis: calc((100% - 60px) / 3);
+  position: relative;
+}
+
+.job-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 370px;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  background: rgba(47, 48, 58, 0.8);
 }
 
 /* Our team */
