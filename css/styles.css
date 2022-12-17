@@ -9,6 +9,7 @@
   --lower-contacts: rgba(255, 255, 255, 0.6);
   --lower-bgc: #2f303a;
   --icons-color: #afb1b8;
+  --modal-bcg: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -66,18 +67,6 @@ body {
   margin-left: 93px;
 }
 
-/* .site-nav .item {
-  margin-right: 50px;
-}
-
-.site-nav .item:last-child {
-  margin-right: 0;
-} */
-
-/* .site-nav .item:not(:last-child) {
-  margin-right: 50px;
-} */
-
 .site-nav .item + .item {
   margin-left: 50px;
 }
@@ -97,10 +86,25 @@ body {
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link.current {
   color: var(--accent-color);
+  position: relative;
+}
+
+.site-nav .link.current::after {
+  position: absolute;
+  content: '';
+  left: 50%;
+  bottom: -1px;
+  transform: translate(-50%, 0%);
+  border-radius: 2px;
+  width: 108%;
+  height: 4px;
+  background-color: #2196f3;
 }
 
 /* contacts header */
@@ -132,6 +136,8 @@ body {
 .contacts .link:hover,
 .contacts .link:focus {
   color: var(--accent-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-smartphone {
@@ -376,6 +382,8 @@ img {
   border-radius: 50%;
   background-color: var(--accent-color);
   color: var(--bcg-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sociallink {
@@ -413,12 +421,53 @@ img {
 .clients-list .link:focus {
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-icon {
   width: 106px;
   height: 60px;
   fill: currentColor;
+}
+
+/* Модальне вікно */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--modal-bcg);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px;
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--bcg-color);
+}
+
+.close-button {
+  position: absolute;
+  right: 8px;
+  padding: 0;
+  border: 0;
+  height: 30px;
+  background-color: #ffffff;
 }
 
 /* Футер */
@@ -469,6 +518,8 @@ img {
 .lower-contacts .link:hover,
 .lower-contacts .link:focus {
   color: var(--accent-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lower-contacts .mail {
@@ -512,6 +563,8 @@ img {
 .social-list .link:hover,
 .social-list .link:focus {
   background-color: var(--accent-color);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* PORTFOLIO STYLES */
@@ -559,6 +612,8 @@ img {
   background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .works {
@@ -575,6 +630,8 @@ img {
 .works .item:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-border {
