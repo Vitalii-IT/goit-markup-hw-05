@@ -10,6 +10,7 @@
   --lower-bgc: #2f303a;
   --icons-color: #afb1b8;
   --modal-bcg: rgba(0, 0, 0, 0.2);
+  --overlay-bcg: rgba(33, 150, 243, 0.9);
 }
 
 body {
@@ -82,12 +83,12 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link.current {
@@ -131,13 +132,13 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts .link:hover,
 .contacts .link:focus {
   color: var(--accent-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-smartphone {
@@ -209,6 +210,46 @@ button {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Модальне вікно */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--modal-bcg);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px;
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--bcg-color);
+}
+
+.close-button {
+  position: absolute;
+  right: 8px;
+  padding: 0;
+  border: none;
+  height: 30px;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 /* Sections */
@@ -377,21 +418,21 @@ img {
   height: 44px;
 }
 
-.member-contacts .sociallink:hover,
-.member-contacts .sociallink:focus {
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  color: var(--bcg-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .sociallink {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 44px;
   color: var(--icons-color);
+  border-radius: 50%;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.member-contacts .sociallink:hover,
+.member-contacts .sociallink:focus {
+  background-color: var(--accent-color);
+  color: var(--bcg-color);
 }
 
 .sociallink .icons {
@@ -415,59 +456,20 @@ img {
   border-radius: 4px;
 
   color: var(--icons-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-list .link:hover,
 .clients-list .link:focus {
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-icon {
   width: 106px;
   height: 60px;
   fill: currentColor;
-}
-
-/* Модальне вікно */
-
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--modal-bcg);
-}
-
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 8px;
-
-  min-width: 528px;
-  min-height: 581px;
-
-  background-color: var(--bcg-color);
-}
-
-.close-button {
-  position: absolute;
-  right: 8px;
-  padding: 0;
-  border: 0;
-  height: 30px;
-  background-color: #ffffff;
 }
 
 /* Футер */
@@ -513,13 +515,12 @@ img {
   font-size: 14px;
   line-height: 1.71;
   text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lower-contacts .link:hover,
 .lower-contacts .link:focus {
   color: var(--accent-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lower-contacts .mail {
@@ -558,13 +559,12 @@ img {
   height: 44px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-list .link:hover,
 .social-list .link:focus {
   background-color: var(--accent-color);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* PORTFOLIO STYLES */
@@ -605,15 +605,17 @@ img {
   border-color: transparent;
   text-decoration: none;
   cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .filters .click:hover,
 .filters .click:focus {
   color: var(--bcg-color);
   background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .works {
@@ -626,12 +628,52 @@ img {
   flex-basis: calc((100% - 60px) / 3);
 }
 
-.works .item:hover,
-.works .item:focus {
+.works-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.works-link:hover,
+.works-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.description-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-bcg);
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.works-link:hover .description-overlay {
+  transform: translateY(0);
+}
+
+.card-description {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  padding: 63px 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: #ffffff;
+}
+
+.card-description .text {
+  margin: 0;
 }
 
 .card-border {
@@ -650,10 +692,6 @@ img {
   line-height: 2;
   letter-spacing: 0.06em;
   color: var(--secondary-text-color);
-}
-
-.works-link {
-  text-decoration: none;
 }
 
 .works-text {
